@@ -1,42 +1,467 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARINA MELESHKINA — Creative Portfolio '26</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@500;700&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #08080a; /* Еще более глубокий космический черный */
+            --card-bg: #0f1015;  /* Серые контейнеры из референса Мух Ясина */
+            --text-color: #ffffff;
+            --text-muted: #626575;
+            --accent-mint: #00ffaa; /* Кислотно-мятный неоновый акцент */
+            --border-color: #1e202b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 0 4vw;
+            overflow-x: hidden;
+            cursor: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Интерактивный мятный курсор-прицел */
+        #custom-cursor {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--accent-mint);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+        }
+
+        /* Навигация */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            letter-spacing: -0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-mint); }
+
+        /* Главный экран по сетке Yasin */
+        .hero-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+            padding: 4rem 0;
+        }
+
+        /* Главный приветственный бокс */
+        .hero-main-box {
+            grid-column: span 8;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 420px;
+        }
+
+        .hero-tag {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            color: var(--accent-mint);
+            background: rgba(0, 255, 170, 0.03);
+        }
+
+        .hero-title {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-top: 2rem;
+        }
+
+        /* Боковой бокс с инфографикой */
+        .hero-side-box {
+            grid-column: span 4;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Круговая диаграмма как на Behance */
+        .status-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent-mint) 85%, var(--border-color) 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .status-circle::after {
+            content: '85%';
+            position: absolute;
+            width: 84px; height: 84px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        /* Сетка-меню в виде футуристичных плашек */
+        .sections-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .menu-column {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .menu-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .menu-text {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Стрелочка в стиле Брутализма */
+        .menu-text::after {
+            content: '→';
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .menu-column:hover {
+            border-color: var(--accent-mint);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 170, 0.02);
+        }
+        .menu-column:hover .menu-num, .menu-column:hover .menu-text::after {
+            color: var(--accent-mint);
+        }
+        .menu-column:hover .menu-text::after {
+            transform: translateX(5px);
+        }
+
+        /* Бегущая строка */
+        .ticker-wrap {
+            width: 100vw;
+            margin-left: -4vw;
+            background-color: var(--accent-mint);
+            overflow: hidden;
+            padding: 1rem 0;
+            margin-top: 5rem;
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: tickerAnimation 20s linear infinite;
+        }
+
+        .ticker-item {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            color: #000000;
+            padding: 0 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        /* Портфолио контейнерами */
+        .section-label {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin: 6rem 0 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-label::after { content: ''; height: 1px; flex-grow: 1; background-color: var(--border-color); }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+        }
+
+        .case-card {
+            grid-column: span 6;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.4s, transform 0.4s;
+        }
+
+        .case-card.wide { grid-column: span 12; }
+
+        .case-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background-color: #14161f;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .case-card.wide .case-image { aspect-ratio: 16 / 7; }
+
+        .case-placeholder {
+            width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .case-info {
+            margin-top: 1.5rem;
+            padding: 0 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .case-title { font-size: 1.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: -0.01em; }
+        .case-tag { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+        .case-card:hover {
+            border-color: var(--accent-mint);
+            transform: translateY(-5px);
+        }
+
+        /* Блок Обо мне в контейнерном стиле */
+        .about-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4rem;
+        }
+
+        .about-text { grid-column: span 7; }
+        .about-text h3 { font-family: 'Unbounded', sans-serif; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.04em; }
+        .about-text p { font-size: 1.05rem; line-height: 1.6; color: #a5a7b4; margin-bottom: 1.2rem; }
+
+        .about-skills { grid-column: span 5; border-left: 1px solid var(--border-color); padding-left: 4rem; }
+        .skill-badge-group { margin-bottom: 2rem; }
+        .skill-badge-group h4 { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; letter-spacing: 0.05em; }
+        
+        .badge-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .b-tag {
+            font-size: 0.8rem; padding: 0.5rem 1rem; background: #14161f;
+            border: 1px solid var(--border-color); border-radius: 100px;
+            color: #d1d2dc;
+            transition: all 0.3s;
+        }
+        .b-tag:hover {
+            border-color: var(--accent-mint);
+            color: var(--accent-mint);
+            transform: scale(1.05);
+        }
+
+        /* Контакты */
+        footer { padding: 8rem 0 4rem 0; text-align: center; }
+        .footer-title { font-family: 'Unbounded', sans-serif; font-size: clamp(1.8rem, 3.5vw, 3.5rem); text-transform: uppercase; margin-bottom: 4rem; letter-spacing: -0.04em; }
+        .footer-links { display: flex; justify-content: center; gap: 5rem; margin-bottom: 5rem; }
+        
+        .footer-links a {
+            font-family: 'Oswald', sans-serif; font-size: 1.8rem; text-transform: uppercase;
+            color: var(--text-color); text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--accent-mint); }
+
+        @keyframes tickerAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+
+        @media (max-width: 992px) {
+            body { cursor: default; }
+            #custom-cursor { display: none; }
+            .hero-main-box, .hero-side-box { grid-column: span 12; min-height: auto; }
+            .sections-menu-grid { grid-template-columns: 1fr; }
+            .case-card { grid-column: span 12; }
+            .about-text, .about-skills { grid-column: span 12; padding-left: 0; border-left: none; }
+            .footer-links { flex-direction: column; gap: 2rem; }
+        }
+    </style>
+</head>
 <body>
 
-    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 3rem 0; border-bottom: 1px solid #222222;">
-        <div style="font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: -0.05em;">ARINA MELESHKINA</div>
-        <div style="display: flex; gap: 2.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">
-            <a href="#portfolio" style="color: #77777a; text-decoration: none;">Портфолио</a>
-            <a href="#about" style="color: #77777a; text-decoration: none;">Обо мне</a>
-            <a href="#contacts" style="color: #77777a; text-decoration: none;">Контакты</a>
+    <div id="custom-cursor"></div>
+
+    <nav>
+        <div class="logo">ARINA MELESHKINA</div>
+        <div class="nav-links">
+            <a href="#portfolio" class="hover-target">Портфолио</a>
+            <a href="#about" class="hover-target">Обо мне</a>
+            <a href="#contacts" class="hover-target">Контакты</a>
         </div>
     </nav>
 
-    <section style="padding: 8rem 0 6rem 0;">
+    <section class="hero-container">
         
-        <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: #77777a; margin-bottom: 2rem; display: flex; align-items: center; gap: 10px;">
-            <span style="width: 6px; height: 6px; background-color: #00f3ff; border-radius: 50%;"></span>
-            Мультидисциплинарный дизайнер
+        <div class="hero-main-box">
+            <div class="hero-tag">МУЛЬТИДИСЦИПЛИНАРНЫЙ ДИЗАЙНЕР</div>
+            <h1 class="hero-title">
+                Создаю фирменные стили, объемную 3D-графику и концептуальные постеры.
+            </h1>
+            <div style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                Институт Современного Искусства // Портфолио '26
+            </div>
         </div>
 
-        <h1 style="font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 7vw, 6.5rem); line-height: 0.9; text-transform: uppercase; letter-spacing: -0.05em; margin-bottom: 4rem;">
-            VISUAL<br>
-            <span style="background: linear-gradient(90deg, #ffffff 0%, #444446 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">RESEARCHER</span>
-        </h1>
-
-        <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; width: 100%; border-top: 1px solid #222222; padding-top: 2rem;">
-            
-            <div style="grid-column: span 5; font-size: 1.1rem; line-height: 1.5; color: #e1e1e6; font-weight: 300;">
-                Создаю <span style="border-bottom: 1px solid #00f3ff; font-weight: 400; color: #fff;">фирменные стили</span>, детализированную и объемную 3D-графику, а также концептуальные постеры.
+        <div class="hero-side-box">
+            <div class="status-circle"></div>
+            <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Текущий статус</div>
+                <div style="font-size: 1.1rem; font-weight: 500;">Активный визуальный исследователь (Identity & 3D space)</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Локация: Москва, РУ</div>
             </div>
-
-            <div style="grid-column: span 3; grid-start: 7; font-size: 0.85rem; color: #77777a; text-transform: uppercase; line-height: 1.6;">
-                <span style="color: #fff; display: block; margin-bottom: 4px;">Специализация:</span>
-                Identity / 3D Art<br>Spatial Design
-            </div>
-
-            <div style="grid-column: span 3; font-size: 0.85rem; color: #77777a; text-transform: uppercase; line-height: 1.6;">
-                <span style="color: #fff; display: block; margin-bottom: 4px;">Локация:</span>
-                Москва, РУ<br>Бэби-шаг '26
-            </div>
-
         </div>
 
     </section>
+
+    <div class="sections-menu-grid">
+        <a href="#about" class="menu-column hover-target">
+            <div class="menu-num">01</div>
+            <div class="menu-text">обо мне</div>
+        </a>
+        <a href="#portfolio" class="menu-column hover-target">
+            <div class="menu-num">02</div>
+            <div class="menu-text">достижения</div>
+        </a>
+        <a href="#branding" class="menu-column hover-target">
+            <div class="menu-num">03</div>
+            <div class="menu-text">айдентика</div>
+        </a>
+        <a href="#posters" class="menu-column hover-target">
+            <div class="menu-num">04</div>
+            <div class="menu-text">постеры</div>
+        </a>
+        <a href="#logos" class="menu-column hover-target">
+            <div class="menu-num">05</div>
+            <div class="menu-text">3D арт</div>
+        </a>
+    </div>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item">ARINA MELESHKINA</div>
+            <div class="ticker-item">VISUAL ARCHITECT</div>
+            <div class="ticker-item">3D BLENDER MODELING</div>
+            <div class="ticker-item">BRANDING CONCEPT</div>
+            <div class="ticker-item">SPATIAL EXPERIENCE</div>
+            <div class="ticker-item">ARINA MELESHKINA</div>
+            <div class="ticker-item">VISUAL ARCHITECT</div>
+            <div class="ticker-item">3D BLENDER MODELING</div>
+            <div class="ticker-item">BRANDING CONCEPT</div>
+            <div class="ticker-item">SPATIAL EXPERIENCE</div>
+        </div>
+    </div>
+
+    <section id="portfolio">
+        <div class="section-label">02 / ИЗБРАННЫЕ КЕЙСЫ</div>
+        
+        <div class="portfolio-grid">
+            <div class="case-card wide hover-target">
+                <div class="case-image">
+                    <div class="case-placeholder">[ BRANDING & IDENTITY CONCEPT ]</div>
+                </div>
+                <div class="case-info">
+                    <div class="case-title">Разработка комплексного брендинга</div>
+                    <div class="case-tag">Фирменный стиль / Айдентика</div>
+                </div>
+            </div>
+
+            <div class="case-card hover-target">
+                <div class="case-image">
+                    <div class="case-placeholder">[ POSTER SERIES ]</div>
+                </div>
+                <div class="case-info">
+                    <div
