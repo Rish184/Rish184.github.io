@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARINA MELESHKINA — MULTIDISCIPLINARY DESIGNER</title>
+    <title>ВЕРА ЗАДОРИНА — Портфолио Графического Дизайнера</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Unbounded:wght@700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-color: #08080a;
-            --text-color: #ffffff;
-            --text-muted: #666673;
-            --accent-cyan: #00f3ff;
-            --accent-pink: #ff0055;
-            --accent-violet: #7000ff;
-            --accent-acid: #d4ff00;
-            --border-color: #1a1a24;
+            --bg-color: #f4f4f6; /* Светлый благородный фон из референса */
+            --text-color: #1a1a1a;
+            --text-muted: #77777a;
+            --accent-pink: #e58b9d; /* Нежно-розовый из твоего Behance */
+            --accent-green: #5cd63d; /* Кислотно-зеленый маркер из резюме */
+            --accent-purple: #7a22c5; /* Фиолетовый акцент из резюме */
+            --border-color: #d1d1d6;
         }
 
         * {
@@ -31,29 +30,11 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
+            /* Стильная точечная сетка на фоне, как на твоем втором скриншоте */
+            background-image: radial-gradient(#d1d1d6 1px, transparent 1px);
+            background-size: 24px 24px;
+            padding: 0 6vw;
             overflow-x: hidden;
-            padding: 0 4vw;
-        }
-
-        /* Трендовый кастомный курсор или элементы разметки */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #222;
-            border-radius: 3px;
-        }
-
-        /* Студийная сетка и изящные линии */
-        .grid-line-h {
-            width: 100vw;
-            height: 1px;
-            background-color: var(--border-color);
-            position: left;
-            margin-left: -4vw;
         }
 
         /* Навигация */
@@ -61,732 +42,476 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2.5rem 0;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .logo-box {
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.05em;
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
-        }
-
-        .status-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            border: 1px solid #1f2937;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            background: #0f0f15;
-        }
-
-        .pulse-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-acid);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-acid);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.6; }
-        }
-
-        /* 01. Главный экран (Hero Section) */
-        .hero {
-            min-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 4rem 0;
-            position: relative;
-        }
-
-        .hero-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-        }
-
-        .hero-index {
-            font-family: 'Unbounded', sans-serif;
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        .hero-title-wrapper {
-            position: relative;
-            margin: auto 0;
-        }
-
-        .hero-title {
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 900;
-            font-size: clamp(2.8rem, 9.5vw, 10rem);
-            line-height: 0.85;
+            gap: 2.5rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: -0.04em;
-            background: #ffffff;
-            -webkit-background-clip: text;
-            mix-blend-mode: difference;
-        }
-
-        .hero-title span.accent-text {
-            display: block;
-            background: linear-gradient(90deg, #00f3ff, #ff0055, #d4ff00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-footer {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 2rem;
-            width: 100%;
-            align-items: flex-end;
-        }
-
-        .hero-description {
-            grid-column: span 6;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .hero-description strong {
-            color: #fff;
-            font-weight: 400;
-        }
-
-        .hero-tags {
-            grid-column: span 6;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: flex-end;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            padding: 0.3rem 0.7rem;
-            border: 1px solid var(--border-color);
-            color: #888;
-            border-radius: 3px;
             letter-spacing: 0.05em;
         }
 
-        .tag-active {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-            background: rgba(0, 243, 255, 0.03);
-        }
-
-        /* Блоки лейблов */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 4rem 0 2rem 0;
-        }
-
-        .section-label {
-            font-family: 'Unbounded', sans-serif;
-            font-size: 0.8rem;
+        .nav-links a {
+            text-decoration: none;
             color: var(--text-muted);
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
+            transition: color 0.3s ease;
         }
 
-        .section-label::before {
-            content: '';
-            display: inline-block;
-            width: 24px;
-            height: 1px;
-            background-color: var(--text-muted);
+        .nav-links a:hover {
+            color: var(--text-color);
         }
 
-        /* 02. Креативный Интерактивный Шоурил */
-        .showreel-block {
+        /* Главный экран (Стиль Behance + Маркеры Веры) */
+        .hero {
+            padding: 8rem 0;
             position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 8;
-            background: #0b0b11;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 6rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            max-width: 900px;
+        }
+
+        /* Эффект выделения текста маркером из резюме Веры */
+        .marker-highlight {
+            background: linear-gradient(180deg, transparent 50%, rgba(92, 214, 61, 0.3) 50%);
+            display: inline;
+            padding: 0 5px;
+            font-weight: 500;
+        }
+
+        .hero-meta {
+            margin-top: 4rem;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+            gap: 4rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
 
-        .showreel-bg-gradient {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(112,0,255,0.15) 0%, rgba(255,0,85,0.05) 50%, transparent 100%);
-            animation: rotateBg 20s infinite linear;
+        .hero-meta strong {
+            color: var(--text-color);
+            font-weight: 500;
         }
 
-        @keyframes rotateBg {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Вертикальная сетка разделов прямо из твоего второго скриншота */
+        .sections-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(244, 244, 246, 0.8);
+            backdrop-filter: blur(5px);
         }
 
-        .showreel-trigger {
-            z-index: 2;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .circle-btn {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: #ffffff;
-            color: #000000;
+        .menu-column {
+            padding: 3rem 1.5rem;
+            border-right: 1px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 700;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .menu-column:last-child {
+            border-right: none;
+        }
+
+        .menu-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 4.5rem);
+            color: var(--accent-pink); /* Тот самый нежно-розовый цвет */
+            line-height: 1;
+            transition: transform 0.4s ease, color 0.4s ease;
+        }
+
+        .menu-text {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* Эффект при наведении на колонку в стиле Behance */
+        .menu-column:hover {
+            background-color: #ffffff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .menu-column:hover .menu-num {
+            color: var(--accent-purple); /* Меняется на фиолетовый из резюме */
+            transform: translateY(-5px);
+        }
+
+        /* Раздел Портфолио / Кейсы */
+        .section-label {
+            font-family: 'Oswald', sans-serif;
             font-size: 0.85rem;
             text-transform: uppercase;
-            box-shadow: 0 0 30px rgba(255,255,255,0.2);
-            transition: all 0.4s ease;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin: 6rem 0 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .showreel-trigger:hover .circle-btn {
-            background: var(--accent-acid);
-            box-shadow: 0 0 40px rgba(212,255,0,0.5);
-            transform: scale(1.1) rotate(15deg);
+        .section-label::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background-color: var(--border-color);
         }
 
-        /* 03. Ломаная дерзкая сетка проектов */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: 5rem 2.5rem;
-            padding: 2rem 0 6rem 0;
+            gap: 3rem;
+            padding-bottom: 6rem;
         }
 
-        .project-card {
+        .case-card {
             grid-column: span 6;
-            position: relative;
-            display: flex;
-            flex-direction: column;
             text-decoration: none;
             color: inherit;
         }
 
-        /* Асимметрия сетки */
-        .p-wide { grid-column: span 12; }
-        .p-left { grid-column: span 7; }
-        .p-right { grid-column: span 5; margin-top: 8rem; }
-        .p-full-center { grid-column: span 10; margin: 0 auto; }
+        .case-card.wide {
+            grid-column: span 12;
+        }
 
-        .image-wrapper {
+        .case-image {
             width: 100%;
-            position: relative;
-            background-color: #0d0d14;
+            aspect-ratio: 16 / 10;
+            background-color: #e9e9ed;
             border: 1px solid var(--border-color);
+            position: relative;
             overflow: hidden;
             transition: border-color 0.4s ease;
         }
 
-        .p-wide .image-wrapper { aspect-ratio: 16 / 8; }
-        .p-left .image-wrapper { aspect-ratio: 4 / 3; }
-        .p-right .image-wrapper { aspect-ratio: 1 / 1; }
-        .p-full-center .image-wrapper { aspect-ratio: 16 / 9; }
+        .case-card.wide .case-image {
+            aspect-ratio: 16 / 7;
+        }
 
-        /* Взрывные градиенты-имитации твоих работ */
-        .art-canvas {
+        /* Коллажная заглушка под будущие сочные проекты Веры */
+        .case-placeholder {
             width: 100%;
             height: 100%;
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            background: #ffffff;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .canvas-1 { background: linear-gradient(135deg, #11002c 0%, #7000ff 50%, #00f3ff 100%); }
-        .canvas-2 { background: linear-gradient(45deg, #240014 0%, #ff0055 60%, #ff9400 100%); }
-        .canvas-3 { background: linear-gradient(225deg, #051400 0%, #174201 40%, #d4ff00 100%); }
-        .canvas-4 { background: linear-gradient(135deg, #001220 0%, #00f3ff 70%, #ffffff 100%); }
-
-        /* Текстура шума поверх артов для кинематографичности */
-        .art-canvas::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.06;
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
-
-        .canvas-label {
-            font-family: 'Unbounded', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            color: rgba(255,255,255,0.2);
+        /* Имитация рваных блокнотных листов и стикеров из резюме Веры */
+        .scrap-paper {
+            background: #fff;
+            padding: 2rem;
+            border: 1px dashed var(--border-color);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.02);
+            transform: rotate(-1.5deg);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
             text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0.8rem 1.5rem;
-            backdrop-filter: blur(5px);
-            border-radius: 4px;
-            transition: all 0.4s ease;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
         }
 
-        /* Эффекты ховера */
-        .project-card:hover .image-wrapper {
-            border-color: #ffffff;
+        .case-card:hover .case-image {
+            border-color: var(--text-color);
         }
 
-        .project-card:hover .art-canvas {
-            transform: scale(1.04);
+        .case-card:hover .case-placeholder {
+            transform: scale(1.02);
         }
 
-        .project-card:hover .canvas-label {
-            color: #ffffff;
-            border-color: #ffffff;
-            background: rgba(255,255,255,0.1);
-        }
-
-        /* Инфо под карточками */
-        .project-meta {
-            margin-top: 1.5rem;
+        .case-info {
+            margin-top: 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
         }
 
-        .project-title {
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 700;
-            font-size: 1.4rem;
-            letter-spacing: -0.02em;
+        .case-title {
+            font-size: 1.2rem;
+            font-weight: 500;
             text-transform: uppercase;
-            transition: color 0.3s ease;
         }
 
-        .project-card:hover .project-title {
-            color: var(--accent-cyan);
-        }
-
-        .project-category {
+        .case-tag {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 0.4rem;
+            margin-top: 0.2rem;
         }
 
-        .project-year {
-            font-family: 'Unbounded', sans-serif;
-            font-size: 0.85rem;
-            color: var(--border-color);
+        /* Обо мне (Блокнотный стиль) */
+        .about-box {
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-year {
-            color: #ffffff;
-            border-color: #ffffff;
-        }
-
-        /* 04. Секция О себе и Резюме */
-        .about-grid {
+            padding: 4rem;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: 4rem 2rem;
-            padding: 4rem 0 6rem 0;
+            gap: 3rem;
+            position: relative;
         }
 
-        .about-left {
+        /* Имитация рваного края или зажима скрепкой */
+        .about-box::before {
+            content: '📎';
+            position: absolute;
+            top: -15px;
+            left: 40px;
+            font-size: 2rem;
+        }
+
+        .about-text {
             grid-column: span 7;
         }
 
-        .about-headline {
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.5rem, 3.5vw, 3.5rem);
-            line-height: 1.1;
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: -0.03em;
-            margin-bottom: 3rem;
-        }
-
-        .about-headline span {
-            background: linear-gradient(90deg, var(--accent-violet), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .about-bio {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: #d1d1e0;
-            font-weight: 300;
-        }
-
-        .about-bio p {
             margin-bottom: 1.5rem;
         }
 
-        .about-bio strong {
-            color: #ffffff;
-            font-weight: 500;
-        }
-
-        .about-right {
-            grid-column: span 5;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .resume-block {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1.5rem;
-        }
-
-        .resume-block h3 {
-            font-family: 'Unbounded', sans-serif;
-            font-size: 0.85rem;
-            color: var(--accent-acid);
-            text-transform: uppercase;
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #444;
             margin-bottom: 1rem;
-            letter-spacing: 0.05em;
         }
 
-        .resume-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
+        .about-skills {
+            grid-column: span 5;
+            border-left: 1px solid var(--border-color);
+            padding-left: 3rem;
         }
 
-        .resume-item {
-            font-size: 0.95rem;
-            color: #a3a3c2;
-            line-height: 1.4;
+        .skill-badge-group {
+            margin-bottom: 2rem;
         }
 
-        .resume-item span {
-            color: var(--text-muted);
+        .skill-badge-group h4 {
             font-size: 0.8rem;
-            display: block;
-            margin-top: 0.1rem;
-        }
-
-        /* 05. Футер / Сверхкрупные Контакты */
-        footer {
-            padding: 6rem 0 4rem 0;
-        }
-
-        .footer-banner {
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 900;
-            font-size: clamp(2rem, 6vw, 6.5rem);
-            line-height: 0.9;
             text-transform: uppercase;
-            letter-spacing: -0.04em;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .b-tag {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+        }
+
+        /* Контакты / Футер */
+        footer {
+            padding: 6rem 0 3rem 0;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: clamp(2rem, 4vw, 4rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
             margin-bottom: 4rem;
         }
 
-        .footer-banner span {
-            display: block;
-            background: linear-gradient(90deg, #ffffff 0%, var(--text-muted) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .links-menu {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .link-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 0;
-            border-top: 1px solid var(--border-color);
+        .footer-links a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: var(--text-color);
             text-decoration: none;
-            color: #ffffff;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
         }
 
-        .link-row:last-child {
-            border-bottom: 1px solid var(--border-color);
+        .footer-links a:hover {
+            color: var(--accent-purple);
+            border-bottom-color: var(--accent-purple);
         }
 
-        .link-title {
-            font-family: 'Unbounded', sans-serif;
-            font-size: clamp(1.2rem, 2.5vw, 2.5rem);
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: transform 0.4s ease, color 0.4s ease;
-        }
-
-        .link-url {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            transition: color 0.4s ease;
-        }
-
-        /* Эффект безумного ховера в контактах */
-        .link-row:hover {
-            background-color: #0f0f17;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-
-        .link-row:hover .link-title {
-            color: var(--accent-acid);
-            transform: scale(1.02);
-        }
-
-        .link-row:hover .link-url {
-            color: #ffffff;
-        }
-
-        .copyright-floor {
-            margin-top: 4rem;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        /* Адаптив */
-        @media (max-width: 992px) {
-            .p-left, .p-right, .p-full-center { grid-column: span 12; margin-top: 0; }
-            .about-left, .about-right { grid-column: span 12; }
-            .hero-description, .hero-tags { grid-column: span 12; justify-content: flex-start; }
+        @media (max-width: 768px) {
+            .sections-menu-grid { grid-template-columns: 1fr; }
+            .menu-column { border-right: none; border-bottom: 1px solid var(--border-color); }
+            .case-card { grid-column: span 12; }
+            .about-text, .about-skills { grid-column: span 12; padding-left: 0; border-left: none; }
+            .footer-links { flex-direction: column; gap: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Шапка сайта -->
     <nav>
-        <div class="logo-box">AM.DESIGN</div>
-        <div class="status-badge">
-            <div class="pulse-dot"></div>
-            <div>OPEN FOR PROJECTS — 2026</div>
-        </div>
+        <div class="logo">VERA ZADORINA // FAITH LEIGH</div>
         <div class="nav-links">
-            <span style="color:#fff;">RU</span>
-            <span style="color:var(--text-muted);">EN</span>
+            <a href="#portfolio">Портфолио</a>
+            <a href="#about">Обо мне</a>
+            <a href="#contacts">Контакты</a>
         </div>
     </nav>
 
-    <div class="grid-line-h"></div>
-
-    <!-- Главный экран (Hero) -->
     <section class="hero">
-        <div class="hero-top">
-            <div class="hero-index">// HERO_SCREEN</div>
-            <div class="hero-index">MOSCOW, RU</div>
-        </div>
-
-        <div class="hero-title-wrapper">
-            <h1 class="hero-title">
-                ARINA<br>
-                <span class="accent-text">MELESHKINA</span>
-            </h1>
-        </div>
-
-        <div class="hero-footer">
-            <div class="hero-description">
-                <strong>Мултидисциплинарный визуальный исследователь.</strong> Сочетаю инженерный бэкграунд промышленного дизайна со смелой цифровой графикой, 3D-моделированием и моушн-динамикой.
-            </div>
-            <div class="hero-tags">
-                <span class="tag tag-active">3D MODELING</span>
-                <span class="tag tag-active">GRAPHIC DESIGN</span>
-                <span class="tag">VISUAL IDENTITY</span>
-                <span class="tag">INDUSTRIAL SOUL</span>
-            </div>
+        <h1 class="hero-title">
+            Графический дизайнер & иллюстратор. Создаю <span class="marker-highlight">фирменные стили</span>, запоминающиеся постеры и концептуальные логотипы.
+        </h1>
+        <div class="hero-meta">
+            <div><strong>ПРОФИЛЬ:</strong> Дизайн в инф. технологиях</div>
+            <div><strong>ТИП ЛИЧНОСТИ:</strong> INFJ</div>
+            <div><strong>ЛОКАЦИЯ:</strong> Москва</div>
         </div>
     </section>
 
-    <div class="grid-line-h"></div>
+    <div class="sections-menu-grid">
+        <a href="#about" class="menu-column">
+            <div class="menu-num">01</div>
+            <div class="menu-text">обо мне</div>
+        </a>
+        <a href="#achievements" class="menu-column">
+            <div class="menu-num">02</div>
+            <div class="menu-text">достижения</div>
+        </a>
+        <a href="#branding" class="menu-column">
+            <div class="menu-num">03</div>
+            <div class="menu-text">фирменный стиль</div>
+        </a>
+        <a href="#posters" class="menu-column">
+            <div class="menu-num">04</div>
+            <div class="menu-text">постеры</div>
+        </a>
+        <a href="#logos" class="menu-column">
+            <div class="menu-num">05</div>
+            <div class="menu-text">логотипы</div>
+        </a>
+    </div>
 
-    <!-- Шоурил -->
-    <section>
-        <div class="section-header">
-            <div class="section-label">01 / Motion & Dynamic Art</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">[ FRAME_RATE: 60FPS ]</div>
-        </div>
-        <div class="showreel-block">
-            <div class="showreel-bg-gradient"></div>
-            <div class="showreel-trigger">
-                <div class="circle-btn">PLAY ↗</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="grid-line-h"></div>
-
-    <!-- Проекты / Галерея -->
-    <section>
-        <div class="section-header">
-            <div class="section-label">02 / Selected Case Studies</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">[ АСИММЕТРИЧНАЯ СЕТКА ]</div>
-        </div>
-
+    <section id="portfolio">
+        <div class="section-label">02 / Избранные работы</div>
+        
         <div class="portfolio-grid">
             
-            <!-- Кейс 1: Крупный (Графика / Айдентика / Концепты выставок) -->
-            <div class="project-card p-wide">
-                <div class="image-wrapper">
-                    <div class="art-canvas canvas-1">
-                        <div class="canvas-label">Смотреть кейс: "Время Кириллицы"</div>
+            <div class="case-card wide">
+                <div class="case-image">
+                    <div class="case-placeholder" style="background: linear-gradient(135deg, #fce4ec, #f1f1f4);">
+                        <div class="scrap-paper" style="transform: rotate(1deg); border-color: var(--accent-pink);">[ ТВОЙ ФИРМЕННЫЙ СТИЛЬ ]</div>
                     </div>
                 </div>
-                <div class="project-meta">
-                    <div>
-                        <div class="project-title">Visual Identity & Typography Concept</div>
-                        <div class="project-category">Графический дизайн / Шрифтовые выставки</div>
-                    </div>
-                    <div class="project-year">'25</div>
+                <div class="case-info">
+                    <div class="case-title">Разработка комплексного брендинга</div>
+                    <div class="case-tag">Фирменный стиль / Айдентика</div>
                 </div>
             </div>
 
-            <!-- Кейс 2: Промышленный бэкграунд / Игровой стул / Мышь в 3D -->
-            <div class="project-card p-left">
-                <div class="image-wrapper">
-                    <div class="art-canvas canvas-2">
-                        <div class="canvas-label">3D Render: Ergonomic Workspace</div>
+            <div class="case-card">
+                <div class="case-image">
+                    <div class="case-placeholder" style="background: linear-gradient(45deg, #e8f5e9, #f1f1f4);">
+                        <div class="scrap-paper" style="transform: rotate(-2deg); border-color: var(--accent-green);">[ ДИЗАЙН ПОСТЕРОВ ]</div>
                     </div>
                 </div>
-                <div class="project-meta">
-                    <div>
-                        <div class="project-title">Industrial Object & 3D Model</div>
-                        <div class="project-category">3D-моделирование / Промышленный дизайн</div>
-                    </div>
-                    <div class="project-year">'26</div>
+                <div class="case-info">
+                    <div class="case-title">Серия концептуальных плакатов</div>
+                    <div class="case-tag">Постеры / Типографика</div>
                 </div>
             </div>
 
-            <!-- Кейс 3: Мобильное приложение / UI концепт -->
-            <div class="project-card p-right">
-                <div class="image-wrapper">
-                    <div class="art-canvas canvas-3">
-                        <div class="canvas-label">App: "Tiny Steps" Digital Product</div>
+            <div class="case-card">
+                <div class="case-image">
+                    <div class="case-placeholder" style="background: linear-gradient(225deg, #f3e5f5, #f1f1f4);">
+                        <div class="scrap-paper" style="transform: rotate(2deg); border-color: var(--accent-purple);">[ ЛОГОТИПЫ ]</div>
                     </div>
                 </div>
-                <div class="project-meta">
-                    <div>
-                        <div class="project-title">UI/UX Concept Development</div>
-                        <div class="project-category">Цифровой продукт / Проектирование интерфейсов</div>
-                    </div>
-                    <div class="project-year">'26</div>
-                </div>
-            </div>
-
-            <!-- Кейс 4: Экспериментальный арт / Детская площадка и мебель -->
-            <div class="project-card p-full-center">
-                <div class="image-wrapper">
-                    <div class="art-canvas canvas-4">
-                        <div class="canvas-label">Concept: Future Kids Furniture</div>
-                    </div>
-                </div>
-                <div class="project-meta">
-                    <div>
-                        <div class="project-title">Spatial Design & Furniture Art</div>
-                        <div class="project-category">Средовой дизайн / Концептуальное проектирование</div>
-                    </div>
-                    <div class="project-year">'25</div>
+                <div class="case-info">
+                    <div class="case-title">Знаки и логоформы для брендов</div>
+                    <div class="case-tag">Векторная графика / Логотипы</div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <div class="grid-line-h"></div>
-
-    <!-- О себе и Резюме -->
-    <section class="about-grid">
-        <div class="about-left">
-            <h2 class="about-headline">Сплав <span>логики формы</span><br>и цифрового безумия.</h2>
-            <div class="about-bio">
-                <p>Я студентка Института современного искусства по направлению <strong>«Графический дизайн»</strong> (выпуск — 2027). До этого два года изучала <strong>Промышленный дизайн</strong> в Томском политехническом университете.</p>
-                <p>Этот бэкграунд дал мне уникальное преимущество: я мыслю не плоской картинкой, а физическим объемом, конструкторской эргономикой и структурой. Я переношу этот жесткий проектный подход в дизайн интерфейсов, смелый брендинг и масштабные 3D-сцены.</p>
+    <section id="about" style="margin-bottom: 4rem;">
+        <div class="section-label">03 / Карточка автора</div>
+        
+        <div class="about-box">
+            <div class="about-text">
+                <h3>Вера Задорина (Faith Leigh)</h3>
+                <p>Я графический дизайнер с дипломами КДПИ им. Карла Фаберже (с отличием) и РЭУ имени Г.В. Плеханова. Мой профиль — сочетание дизайна и информационных технологий.</p>
+                <p>Обладаю редким типом личности INFJ, что помогает мне тонко чувствовать концепцию бренда, глубоко погружаться в задачи и использовать эмпатию для создания дизайна, который откликается у людей.</p>
             </div>
-        </div>
+            
+            <div class="about-skills">
+                <div class="skill-badge-group">
+                    <h4>Инструменты (Софт)</h4>
+                    <div class="badge-list">
+                        <span class="b-tag">Photoshop</span>
+                        <span class="b-tag">Illustrator</span>
+                        <span class="b-tag">Premiere Pro</span>
+                        <span class="b-tag">InDesign</span>
+                        <span class="b-tag">After Effects</span>
+                        <span class="b-tag">Lightroom</span>
+                    </div>
+                </div>
 
-        <div class="about-right">
-            <div class="resume-block">
-                <h3>Инструментарий</h3>
-                <ul class="resume-list">
-                    <li class="resume-item"><strong>2D / Вектор:</strong> Photoshop, Illustrator, Figma, CorelDRAW</li>
-                    <li class="resume-item"><strong>3D / Инжиниринг:</strong> Blender, 3ds Max, Cinema 4D, Autodesk Inventor, AutoCAD</li>
-                    <li class="resume-item"><strong>Motion / Видео:</strong> After Effects, Premiere Pro, Sony Vegas</li>
-                </ul>
-            </div>
-
-            <div class="resume-block">
-                <h3>Выставочный опыт</h3>
-                <ul class="resume-list">
-                    <li class="resume-item">«Время кириллицы» — Экспонент<span>Выставка визуальной культуры</span></li>
-                    <li class="resume-item">«Океан: Мир без границ» — Экспонент<span>Художественный проект</span></li>
-                    <li class="resume-item">«Ритм. Пластика. Дух.» (Майя Плисецкая)<span>Дизайн-композиции</span></li>
-                </ul>
+                <div class="skill-badge-group">
+                    <h4>Специализация</h4>
+                    <div class="badge-list">
+                        <span class="b-tag">Иллюстрация</span>
+                        <span class="b-tag">Фотообработка</span>
+                        <span class="b-tag">Коллажирование</span>
+                        <span class="b-tag">Вёрстка многостраничных изданий</span>
+                        <span class="b-tag">Предпечатная подготовка</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="grid-line-h"></div>
-
-    <!-- Контакты / Подвал -->
-    <footer>
-        <div class="footer-banner">
-            <span>LET'S BUILD</span>
-            <span>NEXT_GEN VISUALS</span>
+    <footer id="contacts">
+        <div class="footer-title">Связаться со мной</div>
+        <div class="footer-links">
+            <a href="mailto:dvfdvfadvf895@gmail.com">Email</a>
+            <a href="https://t.me/kal1onka" target="_blank">Telegram</a>
+            <a href="https://vk.com/ma_ryshka" target="_blank">VKontakte</a>
         </div>
-
-        <div class="links-menu">
-            <a href="https://t.me/kal1onka" target="_blank" class="link-row">
-                <div class="link-title">Telegram</div>
-                <div class="link-url">@kal1onka ↗</div>
-            </a>
-            <a href="mailto:dvfdvfadvf895@gmail.com" class="link-row">
-                <div class="link-title">Email</div>
-                <div class="link-url">dvfdvfadvf895@gmail.com ↗</div>
-            </a>
-            <a href="https://vk.com/ma_ryshka" target="_blank" class="link-row">
-                <div class="link-title">VKontakte</div>
-                <div class="link-url">vk.com/ma_ryshka ↗</div>
-            </a>
-        </div>
-
-        <div class="copyright-floor">
-            <div>© 2026 ARINA MELESHKINA</div>
-            <div>MADE WITH CODE & PASSION</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+            © 2026 Задорина Вера Олеговна. All rights reserved.
         </div>
     </footer>
 
