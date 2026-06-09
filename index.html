@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARINA MELESHKINA — Portfolio '26</title>
+    
+    <!-- Подключаем хайповые и чистые шрифты из Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Базовые настройки студийного стиля */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: #0d0d0d; /* Благородный глубокий графит */
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            padding: 0 4vw; /* Боковые отступы воздуха для всего сайта */
+        }
+
+        /* Тонкие линии интерфейса */
+        .line {
+            width: 100%;
+            height: 1px;
+            background-color: #222222;
+            margin: 2rem 0;
+        }
+
+        /* Навигация */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        nav .logo {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+        }
+
+        nav .status {
+            color: #888888;
+        }
+
+        /* 01. Главный экран (Hero Section) */
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 7vw, 7.5rem); /* Резиновый огромный размер */
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .hero-spec {
+            font-size: 1.1rem;
+            color: #888888;
+            line-height: 1.5;
+        }
+
+        .hero-spec span {
+            color: #ffffff;
+            display: block;
+        }
+
+        /* 02. Блок Шоурила */
+        .section-label {
+            font-size: 0.8rem;
+            color: #555555;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .showreel-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #222222;
+            cursor: pointer;
+            transition: border-color 0.4s ease;
+        }
+
+        .showreel-container:hover {
+            border-color: #ffffff; /* Плавный фокус при наведении */
+        }
+
+        /* Заглушка для твоего яркого видео/кадра */
+        .showreel-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #111111, #1a1a1a); /* Сюда встанет твой сочный футаж */
+            position: relative;
+        }
+
+        .play-btn {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            border: 1px solid #ffffff;
+            background: transparent;
+            color: #ffffff;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .showreel-container:hover .play-btn {
+            background-color: #ffffff;
+            color: #000000;
+            transform: scale(1.05);
+        }
+
+        /* 03. Ломаная сетка проектов (Asymmetric Grid) */
+        .grid-projects {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4rem 2rem;
+            padding: 2rem 0;
+        }
+
+        .project-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Кастомизируем размеры под ломаную сетку */
+        .card-wide { grid-column: span 12; } /* Главный кейс во всю ширину */
+        .card-left { grid-column: span 7; }  /* Асимметричный левый блок */
+        .card-right { grid-column: span 5; margin-top: 5rem; } /* Смещенный правый блок */
+
+        .project-image {
+            width: 100%;
+            background-color: #151515;
+            border: 1px solid #222222;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-wide .project-image {
+            aspect-ratio: 16 / 7; /* Главный баннер делаем вытянутым */
+        }
+
+        /* Эффект зума для ярких картинок при наведении */
+        .project-card:hover .project-image {
+            transform: scale(1.02);
+            border-color: #444444;
+        }
+
+        /* Имитация твоих сочных рендеров и постеров */
+        .img-mock {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #444444;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: #111; /* В Тильде здесь будут твои мега-яркие PNG/WebP */
+        }
+
+        /* Цветовые акценты-заглушки, чтобы показать, как твоя графика будет "взрывать" темный фон */
+        .mock-color-1 { background: linear-gradient(135deg, #ff0055, #7000ff); }
+        .mock-color-2 { background: linear-gradient(135deg, #00f2fe, #4facfe); }
+        .mock-color-3 { background: linear-gradient(135deg, #00ff87, #60efff); }
+
+        .project-info {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-title {
+            font-family: 'Unbounded', sans-serif;
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+            text-transform: uppercase;
+        }
+
+        .project-tags {
+            font-size: 0.8rem;
+            color: #888888;
+            margin-top: 0.2rem;
+        }
+
+        .project-num {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 0.9rem;
+            color: #333333;
+        }
+
+        /* 04. Блок О себе (About Section) */
+        .about-section {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .about-text-block {
+            grid-column: span 7;
+        }
+
+        .about-skills-block {
+            grid-column: span 5;
+            border-left: 1px solid #222222;
+            padding-left: 2rem;
+        }
+
+        .about-p {
+            font-size: clamp(1.1rem, 2vw, 1.6rem);
+            line-height: 1.4;
+            font-weight: 300;
+            color: #e0e0e0;
+        }
+
+        .about-p span {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .skills-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-group h4 {
+            font-size: 0.8rem;
+            color: #555555;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .skills-group p {
+            font-size: 0.95rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        /* 05. Подвал и контакты (Footer) */
+        footer {
+            padding: 6rem 0 3rem 0;
+        }
+
+        .footer-title {
+            font-family: 'Unbounded', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 4.5rem);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 3rem;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid #222222;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .contact-row:last-child {
+            border-bottom: 1px solid #222222;
+        }
+
+        .contact-row:hover {
+            border-top-color: #ffffff;
+            color: #888888; /* Эффект приглушения остальных при наведении */
+        }
+        
+        .contact-row:hover .contact-name {
+            color: #ffffff;
+            transform: translateX(10px);
+        }
+
+        .contact-name {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-link {
+            font-size: 1rem;
+            color: #888888;
+        }
+
+        /* Адаптивность под мобилки */
+        @media (max-width: 768px) {
+            body { padding: 0 5vw; }
+            .card-left, .card-right { grid-column: span 12; margin-top: 0; }
+            .about-text-block, .about-skills-block { grid-column: span 12; padding-left: 0; border-left: none; }
+            .grid-projects { gap: 2.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Меню / Верхняя панель -->
+    <nav>
+        <div class="logo">AM.DSGN</div>
+        <div class="status">[ ДОСТУПНА ДЛЯ ЗАКАЗОВ И В ШТАТ '26 ]</div>
+        <div>RU / EN</div>
+    </nav>
+
+    <div class="line"></div>
+
+    <!-- 01. Главный экран (Hero) -->
+    <section class="hero">
+        <h1 class="hero-title">ARINA<br>MELESHKINA</h1>
+        <div class="hero-meta">
+            <div class="hero-spec">
+                <span>СПЕЦИФИКАЦИЯ:</span>
+                Graphic Design / 3D Modeling / Visual & Industrial Design
+            </div>
+            <div class="hero-spec">
+                <span>ЛОКАЦИЯ:</span>
+                Москва, Россия
+            </div>
+        </div>
+    </section>
+
+    <div class="line"></div>
+
+    <!-- 02. Блок Шоурила -->
+    <section style="margin: 2rem 0;">
+        <div class="section-label">01 / Motion Showreel</div>
+        <div class="showreel-container">
+            <!-- Здесь имитация сочного фона, в будущем туда ставится автоплей-видео -->
+            <div class="showreel-placeholder">
+                <button class="play-btn">Смотреть шоурил ↗</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="line"></div>
+
+    <!-- 03. Портфолио Сетка -->
+    <section style="margin: 2rem 0;">
+        <div class="section-label">02 / Selected Works (Избранные проекты)</div>
+        
+        <div class="grid-projects">
+            
+            <!-- Проект 1: Крупный главный кейс (Айдентика / Графика) -->
+            <div class="project-card card-wide">
+                <div class="project-image">
+                    <!-- Заглушка с градиентом, показывающая сочность контента -->
+                    <div class="img-mock mock-color-1">[ ЗДЕСЬ ТВОЙ ГЛАВНЫЙ БРЕНДИНГ ИЛИ МЕРЧ ]</div>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-title">Visual Identity & Branding Concept</div>
+                        <div class="project-tags">#Graphic Design #Identity #Typography</div>
+                    </div>
+                    <div class="project-num">01</div>
+                </div>
+            </div>
+
+            <!-- Проект 2: Левый блок сетки (3D Проект / Игровой стул / Мышь) -->
+            <div class="project-card card-left">
+                <div class="project-image">
+                    <div class="img-mock mock-color-2">[ ТВОЙ ХАЙПОВЫЙ 3D РЕНДЕР / ПРОМ.ДИЗАЙН ]</div>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-title">3D Modeling & Industrial Object</div>
+                        <div class="project-tags">#3D Visualization #CGI #Blender #3dsMax</div>
+                    </div>
+                    <div class="project-num">02</div>
+                </div>
+            </div>
+
+            <!-- Проект 3: Правый блок сетки, смещенный вниз (Экспериментальные постеры / Кириллица) -->
+            <div class="project-card card-right">
+                <div class="project-image">
+                    <div class="img-mock mock-color-3">[ ЯРКАЯ АНИМАЦИЯ ИЛИ СЕРИЯ ПОСТЕРОВ ]</div>
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-title">Experimental Poster Design</div>
+                        <div class="project-tags">#Motion #Poster Art #AfterEffects</div>
+                    </div>
+                    <div class="project-num">03</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="line"></div>
+
+    <!-- 04. О себе и Резюме -->
+    <section class="about-section">
+        <div class="section-label" style="grid-column: span 12;">03 / About Me & Resume</div>
+        
+        <div class="about-text-block">
+            <p class="about-p">
+                Я — <span>Арина Мелешкина</span>, мультидисциплинарный дизайнер. Студентка ИСИ (выпуск 2027). Благодаря бэкграунду в промышленном дизайне, я умею виртуозно объединять <span>трехмерный объем, жесткую конструкторскую логику и смелую графику</span>. Создаю визуальные концепции, которые приковывают взгляд, и всегда сохраняю идеальный баланс пропорций, деталей и сочных цветов.
+            </p>
+        </div>
+        
+        <div class="about-skills-block">
+            <div class="skills-group">
+                <h4>Инструменты</h4>
+                <p>Photoshop, Illustrator, Figma, CorelDRAW, Blender, 3ds Max, Cinema 4D, After Effects, Premiere Pro</p>
+            </div>
+            <div class="skills-group">
+                <h4>Выставки & Конкурсы</h4>
+                <p>«Время кириллицы», «Океан: Мир без границ», «Ритм. Пластика. Дух.», «Космическая гавань»</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="line"></div>
+
+    <!-- 05. Контакты / Подвал -->
+    <footer>
+        <div class="footer-title">Давайте создадим<br>что-то крутое</div>
+        
+        <a href="https://t.me/kal1onka" target="_blank" class="contact-row">
+            <span class="contact-name">Telegram</span>
+            <span class="contact-link">@kal1onka ↗</span>
+        </a>
+        <a href="mailto:dvfdvfadvf895@gmail.com" class="contact-row">
+            <span class="contact-name">Email</span>
+            <span class="contact-link">dvfdvfadvf895@gmail.com ↗</span>
+        </a>
+        <a href="https://vk.com/ma_ryshka" target="_blank" class="contact-row">
+            <span class="contact-name">VKontakte</span>
+            <span class="contact-link">vk.com/ma_ryshka ↗</span>
+        </a>
+    </footer>
+
+</body>
+</html>
