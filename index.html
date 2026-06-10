@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arina Meleshkina - Portfolio</title>
+    <title>Arina Meleshkina — Portfolio</title>
     <style>
-        /* 1. CSS-ПЕРЕМЕННЫЕ ДЛЯ ТВОИХ ЦВЕТОВ (Легко менять) */
+        /* 1. НАСТРОЙКА ЦВЕТОВ И ШРИФТОВ */
         :root {
-            --bg-color: #3e3f42; /* Темно-серый фон */
+            --bg-color: #3e3f42; 
             --primary-accent: #6afc6b; /* Неоновый зеленый */
             --secondary-accent: #aa8afc; /* Неоновый фиолетовый */
-            --text-color: #d8dbe2; /* Светлый текст */
-            --card-bg: #4f5157; /* Фон блоков */
-            --hard-skills-bg: #4c4d51; /* Твой цвет для Hard Skills */
-            
-            /* Твои шрифты: нужно подключить через <link> в хедере */
+            --text-color: #d8dbe2; 
+            --card-bg: #4f5157; 
+            --hard-skills-bg: #4c4d51; 
             --font-main: 'Plus Jakarta Sans', sans-serif;
-            --font-display: 'Druk Wide', sans-serif; /* Массивный шрифт */
+            --font-display: 'Druk Wide', sans-serif; 
         }
 
-        /* 2. БАЗОВЫЕ СТИЛИ */
         body {
             font-family: var(--font-main);
             background-color: var(--bg-color);
@@ -32,39 +29,51 @@
             align-items: center;
         }
 
-        /* 3. ОБЩИЕ СТИЛИ ЗАГОЛОВКОВ */
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: var(--font-display);
             text-transform: uppercase;
             margin: 0;
         }
 
-        .main-header {
+        .main-container {
             width: 100%;
             max-width: 1200px;
-            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .name {
+        /* 2. ХЕДЕР (ПРОФИЛЬ И КОНТАКТЫ) */
+        .name-top {
             font-size: 24px;
-            color: #afadad; /* Цвет имени в хедере */
+            color: #afadad;
+            font-family: var(--font-display);
         }
 
         .header-content {
             display: flex;
             background-color: var(--card-bg);
             border-radius: 40px;
-            padding: 30px;
-            gap: 30px;
+            padding: 40px;
+            gap: 40px;
             align-items: center;
+            position: relative;
         }
 
-        .portfolio-pic {
-            width: 160px;
-            height: 160px;
-            background-color: #6a6c71; /* Заглушка для фото */
+        .portfolio-pic-container {
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             border: 4px solid var(--secondary-accent);
+            overflow: hidden;
+            background-color: #6a6c71;
+            flex-shrink: 0;
+        }
+
+        .portfolio-pic-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .header-text-block {
@@ -74,31 +83,52 @@
         .title-designer {
             font-size: 18px;
             color: var(--primary-accent);
+            margin-bottom: 10px;
         }
 
         .main-title-display {
-            font-size: 48px;
+            font-size: 56px;
             color: var(--secondary-accent);
-            letter-spacing: -2px;
+            line-height: 0.9;
+            margin-bottom: 25px;
         }
 
-        /* 4. БЛОК ОБО МНЕ */
-        .about-me {
-            width: 100%;
-            max-width: 1200px;
+        .contacts-list {
             display: flex;
-            gap: 30px;
-            margin-bottom: 50px;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .contacts-list a {
+            color: var(--primary-accent);
+            text-decoration: none;
+        }
+
+        .location-tag {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: var(--font-display);
+            color: var(--primary-accent);
+            opacity: 0.7;
+        }
+
+        /* 3. ДВУХКОЛОННЫЙ БЛОК (ОБО МНЕ + HARD SKILLS) */
+        .two-columns {
+            display: flex;
+            gap: 20px;
         }
 
         .about-text-card {
             background-color: var(--card-bg);
             border-radius: 30px;
-            padding: 30px;
+            padding: 35px;
             width: 60%;
+            position: relative;
         }
 
-        .about-me h2 {
+        .about-text-card h2 {
             font-size: 36px;
             color: #afadad;
             margin-bottom: 20px;
@@ -111,257 +141,347 @@
         }
 
         .language-tag {
-            background-color: #6a6c71;
+            position: absolute;
+            bottom: 35px;
+            right: 35px;
+            background-color: #3e3f42;
+            border: 1px solid var(--text-color);
             color: #d8dbe2;
-            padding: 5px 15px;
-            border-radius: 15px;
+            padding: 10px 20px;
+            border-radius: 20px;
             font-size: 14px;
-            margin-top: 15px;
-            display: inline-block;
+            font-weight: bold;
         }
 
-        /* 5. HARD SKILLS: СЕТКА ДЛЯ ИКОНОК */
+        /* HARD SKILLS */
         .hard-skills {
-            width: 100%;
-            max-width: 1200px;
             background-color: var(--hard-skills-bg);
             border-radius: 30px;
-            padding: 30px;
-            width: 35%;
+            padding: 35px;
+            width: 40%;
         }
 
         .hard-skills h2 {
-            font-size: 18px;
+            font-size: 22px;
             color: #afadad;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        .hard-skills h3 {
+        .skill-section {
+            margin-bottom: 20px;
+        }
+
+        .skill-section-title {
             font-size: 14px;
             color: #d8dbe2;
-            margin-top: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .hard-skills-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 5 иконок в ряд */
+            display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .skill-icon-placeholder {
+        .icon-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 55px;
+        }
+
+        .icon-circle {
             width: 50px;
             height: 50px;
             background-color: #6a6c71;
             border-radius: 50%;
-            border: 2px solid #8e9095;
-            position: relative;
-        }
-        
-        .skill-icon-placeholder span {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 10px;
-            color: #d8dbe2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        /* 6. SOFT SKILLS: ИЕРАРХИЯ (ТВОЯ НОВАЯ СТРУКТУРА) */
-        .soft-skills {
+        .icon-circle img {
             width: 100%;
-            max-width: 1200px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .icon-label {
+            font-size: 10px;
+            color: #afadad;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* 4. SOFT SKILLS */
+        .soft-skills {
             background-color: var(--card-bg);
             border-radius: 30px;
             padding: 30px;
-            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .soft-skills h2 {
+            font-size: 20px;
+            color: var(--secondary-accent);
+            margin-bottom: 20px;
+        }
+
+        .soft-skills-container {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        .soft-skills-row {
+        .soft-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
         }
 
-        .soft-skill-tag {
-            color: #8e9095; /* Основной цвет для менее важных */
-        }
-
-        /* Стили для первой, самой важной группы */
-        .soft-skills-row:first-child .soft-skill-tag {
-            font-size: 20px;
-            color: #d8dbe2;
+        .soft-tag {
             font-weight: bold;
         }
 
-        /* Стили для остальных рядов */
-        .soft-skills-row:not(:first-child) .soft-skill-tag {
-            font-size: 16px;
-        }
+        /* Разные размеры из твоего макета */
+        .row-1 { font-size: 22px; color: #ffffff; }
+        .row-2 { font-size: 18px; color: #d8dbe2; }
+        .row-3 { font-size: 14px; color: #afadad; }
 
-        /* 7. ОПЫТ & ПРОЕКТЫ (МНОГОСТРАНИЧНАЯ НАВИГАЦИЯ) */
+        /* 5. МНОГОСТРАНИЧНАЯ НАВИГАЦИЯ ДЛЯ ОПЫТА */
         .experience {
-            width: 100%;
-            max-width: 1200px;
             background-color: var(--card-bg);
             border-radius: 30px;
-            padding: 30px;
+            padding: 40px;
         }
 
         .experience h2 {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--secondary-accent);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        .experience-item {
-            margin-bottom: 25px;
+        .exp-item {
+            margin-bottom: 35px;
+            border-bottom: 1px solid #5a5c62;
+            padding-bottom: 25px;
         }
 
-        /* Стили для строчки, которая при клике открывает другую страницу */
-        .case-link-row {
-            cursor: pointer;
+        .exp-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .page-link-trigger {
             display: flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
             color: var(--secondary-accent);
             transition: color 0.3s ease;
+            margin-bottom: 15px;
         }
 
-        .case-link-row:hover {
-            color: var(--primary-accent); /* Зеленый при наведении */
+        .page-link-trigger:hover {
+            color: var(--primary-accent);
         }
 
-        .exp-icon {
-            font-size: 16px;
+        .page-link-trigger h3 {
+            font-size: 20px;
         }
 
-        .exp-title-row h3 {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 0;
-            color: inherit;
-        }
-
-        .exp-case-tag {
+        .hover-case-tag {
             font-family: var(--font-main);
-            font-size: 12px;
+            font-size: 14px;
             text-transform: none;
-            opacity: 0; /* Скрыт по умолчанию */
+            color: var(--primary-accent);
+            opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .case-link-row:hover .exp-case-tag {
-            opacity: 1; /* Показывается при наведении */
+        .page-link-trigger:hover .hover-case-tag {
+            opacity: 1;
         }
 
-        .exp-description {
-            padding-left: 26px;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #afadad;
+        .inner-details {
+            padding-left: 25px;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        .exp-description h4 {
-            font-size: 14px;
-            font-weight: bold;
-            color: #d8dbe2;
-            margin: 10px 0 5px 0;
+        .inner-details strong {
+            color: #ffffff;
+        }
+
+        .sub-project {
+            margin-top: 10px;
         }
 
     </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="name">ARINA MELESHKINA</div>
+    <div class="main-container">
+
+        <header class="name-top">ARINA MELESHKINA</header>
         <div class="header-content">
-            <div class="portfolio-pic"></div> <div class="header-text-block">
-                <div class="title-designer">3D, CG & PRODUCT DESIGNER</div>
+            <div class="portfolio-pic-container">
+                <img src="avatar.png" alt="Arina">
+            </div>
+            <div class="header-text-block">
+                <div class="title-designer">& 3D, CG & PRODUCT DESIGNER</div>
                 <h1 class="main-title-display">ARINA MELESHKINA<br>PORTFOLIO</h1>
+                <div class="contacts-list">
+                    <div>Telegram: <a href="https://t.me/kallonka" target="_blank">@kallonka</a></div>
+                    <div>VK: <a href="https://vk.com/ma_ryshka" target="_blank">id:ma_ryshka</a></div>
+                    <div>Email: <a href="mailto:dvfdvadvf895@gmail.com">dvfdvadvf895@gmail.com</a></div>
                 </div>
+            </div>
+            <div class="location-tag">MOSCOW</div>
         </div>
-    </header>
 
-    <main class="about-me">
-        <section class="about-text-card">
-            <h2>ОБО МНЕ:</h2>
-            <div class="about-text">
-                <p>Привет! Меня зовут Арина, я дизайнер из Москвы.</p>
-                <p>Мой фокус - это стык искусства, объёма и продуктового дизайна. Я создаю детальные 3D-модели, пишу картины, рисую иллюстрации, монтирую динамичные видео и проектирую удобные интерфейсы для сайтов и приложений.</p>
+        <div class="two-columns">
+            <section class="about-text-card">
+                <h2>ОБО МНЕ:</h2>
+                <div class="about-text">
+                    <p>Привет! Меня зовут Арина, я дизайнер из Москвы.</p>
+                    <p>Мой фокус - это стык искусства, объёма и продуктового дизайна. Я создаю детальные 3D-модели, пишу картины, рисую иллюстрации, монтирую динамичные видео и проектирую удобные интерфейсы для сайтов и приложений.</p>
+                    <p>Академическая база помогает мне чувствовать форму и цвет, а владение софтом - переносить идеи в digital-пространство. С энтузиазмом развиваю свои навыки и внимательно слежу за новыми трендами в дизайне.</p>
+                </div>
                 <div class="language-tag">English: Intermediate (B1)</div>
-            </div>
-        </section>
-
-        <section class="hard-skills">
-            <h2>HARD SKILLS</h2>
-            <h3>3D-моделирование & CAD:</h3>
-            <div class="hard-skills-grid">
-                <div class="skill-icon-placeholder"><span>Blender</span></div>
-                <div class="skill-icon-placeholder"><span>3D Max</span></div>
-                <div class="skill-icon-placeholder"><span>Cinema 4D</span></div>
-                <div class="skill-icon-placeholder"><span>Inventor</span></div>
-                <div class="skill-icon-placeholder"><span>AutoCAD</span></div>
-            </div>
             </section>
-    </main>
 
-    <section class="soft-skills">
-        <div class="soft-skills-row">
-            <span class="soft-skill-tag">#Креативность</span>
-            <span class="soft-skill-tag">#Адаптивность</span>
-            <span class="soft-skill-tag">#Насмотренность</span>
-        </div>
-        <div class="soft-skills-row">
-            <span class="soft-skill-tag">#Многозадачность</span>
-            <span class="soft-skill-tag">#Концептуальность</span>
-            <span class="soft-skill-tag">#Перфекционизм</span>
-        </div>
-        <div class="soft-skills-row">
-            <span class="soft-skill-tag">#Усидчивость</span>
-            <span class="soft-skill-tag">#Организованность</span>
-            <span class="soft-skill-tag">#Коммуникабельность</span>
-        </div>
-    </section>
-
-    <section class="experience">
-        <h2>ОПЫТ & ПРОЕКТЫ</h2>
-
-        <div class="experience-item">
-            <a href="case-samo.html" class="case-link-row">
-                <span class="exp-icon">➕</span>
-                <div class="exp-title-row">
-                    <h3>2024 — 2027 | Институт Современного Искусства</h3>
+            <section class="hard-skills">
+                <h2>HARD SKILLS</h2>
+                
+                <div class="skill-section">
+                    <div class="skill-section-title">➕ 3D-моделирование & CAD:</div>
+                    <div class="hard-skills-grid">
+                        <div class="icon-box"><div class="icon-circle"><img src="blender.png" alt="Blender"></div><div class="icon-label">Blender</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="3dmax.png" alt="3D Max"></div><div class="icon-label">3D Max</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="c4d.png" alt="Cinema 4D"></div><div class="icon-label">Cinema 4D</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="inventor.png" alt="Inventor"></div><div class="icon-label">Inventor</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="autocad.png" alt="AutoCAD"></div><div class="icon-label">AutoCAD</div></div>
+                    </div>
                 </div>
-                <span class="exp-case-tag">[ Посмотреть кейс Samo ↗ ]</span>
-            </a>
-            
-            <div class="exp-description">
-                <h4>UI/UX дизайн:</h4>
-                <p>Разработка концепта и интерфейса детского приложения Samo.</p>
+
+                <div class="skill-section">
+                    <div class="skill-section-title">➕ Графика & UI/UX дизайн:</div>
+                    <div class="hard-skills-grid">
+                        <div class="icon-box"><div class="icon-circle"><img src="ps.png" alt="Photoshop"></div><div class="icon-label">Photoshop</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="ai.png" alt="Illustrator"></div><div class="icon-label">Illustrator</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="figma.png" alt="Figma"></div><div class="icon-label">Figma</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="corel.png" alt="CorelDRAW"></div><div class="icon-label">CorelDRAW</div></div>
+                    </div>
                 </div>
+
+                <div class="skill-section">
+                    <div class="skill-section-title">➕ Видеопроизводство & Motion:</div>
+                    <div class="hard-skills-grid">
+                        <div class="icon-box"><div class="icon-circle"><img src="pr.png" alt="Premiere"></div><div class="icon-label">Premiere Pro</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="ae.png" alt="After Effects"></div><div class="icon-label">After Effects</div></div>
+                        <div class="icon-box"><div class="icon-circle"><img src="vegas.png" alt="Vegas"></div><div class="icon-label">Sony Vegas</div></div>
+                    </div>
+                </div>
+
+                <div class="skill-section">
+                    <div class="skill-section-title">➕ Живопись & Графика</div>
+                    <div class="skill-section-title">➕ Работа с AI</div>
+                    <div class="skill-section-title">➕ Цифровой рисунок</div>
+                </div>
+            </section>
         </div>
 
-        <div class="experience-item">
-            <a href="case-bowl-chair.html" class="case-link-row">
-                <span class="exp-icon">➕</span>
-                <div class="exp-title-row">
-                    <h3>2022 — 2024 | Томский Политехнический Университет</h3>
+        <section class="soft-skills">
+            <h2>SOFT SKILLS</h2>
+            <div class="soft-skills-container">
+                <div class="soft-row row-1">
+                    <span class="soft-tag">#Креативность</span>
+                    <span class="soft-tag">#Автономность</span>
+                    <span class="soft-tag">#Концептуальность</span>
+                    <span class="soft-tag">#Усидчивость</span>
                 </div>
-                <span class="exp-case-tag">[ Посмотреть макет стула ↗ ]</span>
-            </a>
-            <div class="exp-description">
-                <p>[ 3D-Макеты • Промдизайн • Эргономика ]</p>
+                <div class="soft-row row-2">
+                    <span class="soft-tag">#Многозадачность</span>
+                    <span class="soft-tag">#Адаптивность</span>
+                    <span class="soft-tag">#Организованность</span>
+                    <span class="soft-tag">#Перфекционизм</span>
+                </div>
+                <div class="soft-row row-3">
+                    <span class="soft-tag">#Насмотренность</span>
+                    <span class="soft-tag">#Инициативность</span>
+                    <span class="soft-tag">#Эмпатия</span>
+                    <span class="soft-tag">#Коммуникабельность</span>
+                </div>
             </div>
-        </div>
-        
         </section>
+
+        <section class="experience">
+            <h2>ОПЫТ & ПРОЕКТЫ</h2>
+
+            <div class="exp-item">
+                <a href="isi-page.html" class="page-link-trigger">
+                    <h3>➕ 2024 — 2027 | Институт Современного Искусства</h3>
+                    <span class="hover-case-tag">[ Открыть страницу проектов ↗ ]</span>
+                </a>
+                <div class="inner-details">
+                    <div class="sub-project"><strong>UI/UX дизайн:</strong> Разработка концепта и интерфейса детского приложения Samo.</div>
+                    <div class="sub-project"><strong>Брендинг & Мерч:</strong> Лимитированные линейки сувениров для Музея «Новый Иерусалим» (Истра), Первого Музея Славянской Мифологии и мерч ИСИ.</div>
+                    <div class="sub-project"><strong>Иллюстрация & Print:</strong> Создание, верстка и дизайн авторской детской книги; отрисовка уникальных стикерпаков.</div>
+                    <div class="sub-project"><strong>Концепт-дизайн & Motion:</strong> Разработка концепции новогодней ёлки и игрушек; создание обучающего видеоролика по Эндрю Уайету.</div>
+                    <div class="sub-project"><strong>Аналитика:</strong> Исследовательская работа и соавторство в «Словаре дизайна».</div>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <a href="tpu-page.html" class="page-link-trigger">
+                    <h3>➕ 2022 — 2024 | Томский Политехнический Университет</h3>
+                    <span class="hover-case-tag">[ Открыть страницу проектов ↗ ]</span>
+                </a>
+                <div class="inner-details" style="color: #afadad;">
+                    [ 3D-Макеты • Промдизайн • Эргономика • Анимация ]
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <a href="courses-page.html" class="page-link-trigger">
+                    <h3>➕ 2021 — 2022 | Практический курс профориентации</h3>
+                    <span class="hover-case-tag">[ Посмотреть базу ↗ ]</span>
+                </a>
+                <div class="inner-details" style="color: #afadad;">
+                    [ Академическая база • Живопись • Рисунок ]
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <a href="commercial-page.html" class="page-link-trigger">
+                    <h3>➕ КОММЕРЧЕСКИЙ ОПЫТ</h3>
+                    <span class="hover-case-tag">[ Посмотреть коммерческие кейсы ↗ ]</span>
+                </a>
+                <div class="inner-details" style="color: #afadad;">
+                    [ Freelance • Заказчики • Разработка персонажа ]
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <a href="awards-page.html" class="page-link-trigger">
+                    <h3>➕ НАГРАДЫ & ВЫСТАВКИ</h3>
+                    <span class="hover-case-tag">[ Открыть дипломы и грамоты ↗ ]</span>
+                </a>
+                <div class="inner-details" style="color: #afadad;">
+                    [ Всероссийские конкурсы • Экспозиции • Академическая база ]
+                </div>
+            </div>
+
+        </section>
+
+    </div>
 
 </body>
 </html>
