@@ -3,464 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARINA MELESHKINA — Portfolio '26</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@500;700&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
-
+    <title>Arina Meleshkina - Portfolio</title>
     <style>
+        /* 1. CSS-ПЕРЕМЕННЫЕ ДЛЯ ТВОИХ ЦВЕТОВ (Легко менять) */
         :root {
-            --bg-color: #0b0b0d; 
-            --card-bg: #121318;  
-            --text-color: #ffffff;
-            --text-muted: #6c6f80;
-            --accent-mint: #00ffaa; 
-            --border-color: #1e202b;
+            --bg-color: #3e3f42; /* Темно-серый фон */
+            --primary-accent: #6afc6b; /* Неоновый зеленый */
+            --secondary-accent: #aa8afc; /* Неоновый фиолетовый */
+            --text-color: #d8dbe2; /* Светлый текст */
+            --card-bg: #4f5157; /* Фон блоков */
+            --hard-skills-bg: #4c4d51; /* Твой цвет для Hard Skills */
+            
+            /* Твои шрифты: нужно подключить через <link> в хедере */
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Druk Wide', sans-serif; /* Массивный шрифт */
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* 2. БАЗОВЫЕ СТИЛИ */
         body {
+            font-family: var(--font-main);
             background-color: var(--bg-color);
             color: var(--text-color);
-            padding: 0 4vw;
-            overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Навигация */
-        nav {
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border-color);
         }
 
-        .logo {
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 900;
-            font-size: 1rem;
-            letter-spacing: -0.05em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            font-size: 0.8rem;
+        /* 3. ОБЩИЕ СТИЛИ ЗАГОЛОВКОВ */
+        h1, h2, h3 {
+            font-family: var(--font-display);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            margin: 0;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--accent-mint); }
-
-        /* Сетка главного экрана */
-        .hero-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 3rem 0;
-        }
-
-        @media (min-width: 768px) {
-            .hero-container {
-                display: grid;
-                grid-template-columns: repeat(12, 1fr);
-            }
-        }
-
-        .hero-main-box {
-            grid-column: span 8;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        .hero-tag {
-            align-self: flex-start;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 0.4rem 0.8rem;
-            border: 1px solid var(--border-color);
-            border-radius: 100px;
-            color: var(--accent-mint);
-            background: rgba(0, 255, 170, 0.02);
-        }
-
-        .hero-title {
-            font-family: 'Unbounded', sans-serif;
-            font-weight: 900;
-            font-size: clamp(1.8rem, 3.5vw, 3.5rem);
-            line-height: 1.2;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-        }
-
-        .hero-side-box {
-            grid-column: span 4;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        /* Упрощенный стабильный индикатор */
-        .status-bar {
+        .main-header {
             width: 100%;
-            height: 6px;
-            background: var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-        .status-bar-fill {
-            width: 85%;
-            height: 100%;
-            background: var(--accent-mint);
+            max-width: 1200px;
+            margin-bottom: 40px;
         }
 
-        /* Меню-плашки */
-        .sections-menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+        .name {
+            font-size: 24px;
+            color: #afadad; /* Цвет имени в хедере */
         }
 
-        .menu-column {
+        .header-content {
+            display: flex;
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2rem 1.5rem;
-            border-radius: 16px;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 140px;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .menu-num {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            color: var(--text-muted);
-        }
-
-        .menu-text {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
+            border-radius: 40px;
+            padding: 30px;
+            gap: 30px;
             align-items: center;
         }
 
-        .menu-column:hover {
-            border-color: var(--accent-mint);
-            transform: translateY(-3px);
+        .portfolio-pic {
+            width: 160px;
+            height: 160px;
+            background-color: #6a6c71; /* Заглушка для фото */
+            border-radius: 50%;
+            border: 4px solid var(--secondary-accent);
         }
 
-        /* Бегущая строка (теперь без микро-дерганий) */
-        .ticker-wrap {
-            width: 100vw;
-            margin-left: -4vw;
-            background-color: var(--accent-mint);
-            overflow: hidden;
-            padding: 0.8rem 0;
-            margin-top: 4rem;
+        .header-text-block {
+            flex-grow: 1;
         }
 
-        .ticker {
-            display: flex;
-            white-space: nowrap;
-            animation: tickerAnimation 30s linear infinite;
+        .title-designer {
+            font-size: 18px;
+            color: var(--primary-accent);
         }
 
-        .ticker-item {
-            font-family: 'Unbounded', sans-serif;
-            font-size: 1rem;
-            text-transform: uppercase;
-            color: #000000;
-            padding: 0 2rem;
-            font-weight: 700;
+        .main-title-display {
+            font-size: 48px;
+            color: var(--secondary-accent);
+            letter-spacing: -2px;
         }
 
-        /* Сетка работ */
-        .section-label {
-            font-family: 'Unbounded', sans-serif;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin: 5rem 0 2rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .section-label::after { content: ''; height: 1px; flex-grow: 1; background-color: var(--border-color); }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
-        }
-
-        .case-card {
-            grid-column: span 12;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 1.2rem;
-            text-decoration: none;
-            color: inherit;
-            transition: border-color 0.3s;
-        }
-
-        @media (min-width: 768px) {
-            .case-card { grid-column: span 6; }
-            .case-card.wide { grid-column: span 12; }
-        }
-
-        .case-image {
+        /* 4. БЛОК ОБО МНЕ */
+        .about-me {
             width: 100%;
-            aspect-ratio: 16 / 10;
-            background-color: #161822;
-            border-radius: 12px;
-        }
-        .case-card.wide .case-image { aspect-ratio: 16 / 7; }
-
-        .case-placeholder {
-            width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            letter-spacing: 0.05em;
-        }
-
-        .case-info {
-            margin-top: 1rem;
+            max-width: 1200px;
             display: flex;
-            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
-        .case-title { font-size: 1.1rem; font-weight: 500; text-transform: uppercase; }
-        .case-tag { font-size: 0.8rem; color: var(--text-muted); }
-
-        .case-card:hover { border-color: var(--accent-mint); }
-
-        /* Обо мне */
-        .about-box {
+        .about-text-card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 3rem;
+            border-radius: 30px;
+            padding: 30px;
+            width: 60%;
+        }
+
+        .about-me h2 {
+            font-size: 36px;
+            color: #afadad;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+        }
+
+        .language-tag {
+            background-color: #6a6c71;
+            color: #d8dbe2;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        /* 5. HARD SKILLS: СЕТКА ДЛЯ ИКОНОК */
+        .hard-skills {
+            width: 100%;
+            max-width: 1200px;
+            background-color: var(--hard-skills-bg);
+            border-radius: 30px;
+            padding: 30px;
+            width: 35%;
+        }
+
+        .hard-skills h2 {
+            font-size: 18px;
+            color: #afadad;
+            margin-bottom: 10px;
+        }
+
+        .hard-skills h3 {
+            font-size: 14px;
+            color: #d8dbe2;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .hard-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 иконок в ряд */
+            gap: 15px;
+        }
+
+        .skill-icon-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: #6a6c71;
+            border-radius: 50%;
+            border: 2px solid #8e9095;
+            position: relative;
+        }
+        
+        .skill-icon-placeholder span {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #d8dbe2;
+        }
+
+        /* 6. SOFT SKILLS: ИЕРАРХИЯ (ТВОЯ НОВАЯ СТРУКТУРА) */
+        .soft-skills {
+            width: 100%;
+            max-width: 1200px;
+            background-color: var(--card-bg);
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 50px;
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 15px;
         }
 
-        @media (min-width: 992px) {
-            .about-box {
-                display: grid;
-                grid-template-columns: repeat(12, 1fr);
-            }
-            .about-text { grid-column: span 7; }
-            .about-skills { grid-column: span 5; border-left: 1px solid var(--border-color); padding-left: 3rem; }
+        .soft-skills-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
         }
 
-        .about-text h3 { font-family: 'Unbounded', sans-serif; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .about-text p { font-size: 1rem; line-height: 1.6; color: #a5a7b4; margin-bottom: 1rem; }
-
-        .skill-badge-group { margin-bottom: 1.5rem; }
-        .skill-badge-group h4 { font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.8rem; }
-        
-        .badge-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .b-tag {
-            font-size: 0.75rem; padding: 0.4rem 0.8rem; background: #181922;
-            border: 1px solid var(--border-color); border-radius: 100px;
-            color: #d1d2dc;
+        .soft-skill-tag {
+            color: #8e9095; /* Основной цвет для менее важных */
         }
 
-        /* Контакты */
-        footer { padding: 6rem 0 3rem 0; text-align: center; }
-        .footer-title { font-family: 'Unbounded', sans-serif; font-size: clamp(1.5rem, 3vw, 2.8rem); text-transform: uppercase; margin-bottom: 3rem; }
-        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 4rem; }
-        
-        .footer-links a {
-            font-family: 'Oswald', sans-serif; font-size: 1.5rem; text-transform: uppercase;
-            color: var(--text-color); text-decoration: none;
-            transition: color 0.2s;
+        /* Стили для первой, самой важной группы */
+        .soft-skills-row:first-child .soft-skill-tag {
+            font-size: 20px;
+            color: #d8dbe2;
+            font-weight: bold;
         }
-        .footer-links a:hover { color: var(--accent-mint); }
 
-        @keyframes tickerAnimation { 
-            0% { transform: translate3d(0, 0, 0); } 
-            100% { transform: translate3d(-50%, 0, 0); } 
+        /* Стили для остальных рядов */
+        .soft-skills-row:not(:first-child) .soft-skill-tag {
+            font-size: 16px;
         }
+
+        /* 7. ОПЫТ & ПРОЕКТЫ (МНОГОСТРАНИЧНАЯ НАВИГАЦИЯ) */
+        .experience {
+            width: 100%;
+            max-width: 1200px;
+            background-color: var(--card-bg);
+            border-radius: 30px;
+            padding: 30px;
+        }
+
+        .experience h2 {
+            font-size: 24px;
+            color: var(--secondary-accent);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .experience-item {
+            margin-bottom: 25px;
+        }
+
+        /* Стили для строчки, которая при клике открывает другую страницу */
+        .case-link-row {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--secondary-accent);
+            transition: color 0.3s ease;
+        }
+
+        .case-link-row:hover {
+            color: var(--primary-accent); /* Зеленый при наведении */
+        }
+
+        .exp-icon {
+            font-size: 16px;
+        }
+
+        .exp-title-row h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+            color: inherit;
+        }
+
+        .exp-case-tag {
+            font-family: var(--font-main);
+            font-size: 12px;
+            text-transform: none;
+            opacity: 0; /* Скрыт по умолчанию */
+            transition: opacity 0.3s ease;
+        }
+
+        .case-link-row:hover .exp-case-tag {
+            opacity: 1; /* Показывается при наведении */
+        }
+
+        .exp-description {
+            padding-left: 26px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #afadad;
+        }
+
+        .exp-description h4 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #d8dbe2;
+            margin: 10px 0 5px 0;
+        }
+
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">ARINA MELESHKINA</div>
-        <div class="nav-links">
-            <a href="#portfolio">Портфолио</a>
-            <a href="#about">Обо мне</a>
-            <a href="#contacts">Контакты</a>
-        </div>
-    </nav>
-
-    <section class="hero-container">
-        <div class="hero-main-box">
-            <div class="hero-tag">МУЛЬТИДИСЦИПЛИНАРНЫЙ ДИЗАЙНЕР</div>
-            <h1 class="hero-title">Создаю фирменные стили, объемную 3D-графику и концептуальные постеры.</h1>
-            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; border-top: 1px solid var(--border-color); padding-top: 1rem;">
-                Институт Современного Искусства // 2026
-            </div>
-        </div>
-
-        <div class="hero-side-box">
-            <div>
-                <div class="status-bar"><div class="status-bar-fill"></div></div>
-                <div style="font-size: 1rem; font-weight: 500; margin-bottom: 0.3rem;">85% Visual Research</div>
-                <div style="font-size: 0.8rem; color: var(--text-muted);">Фокус на Identity & 3D space</div>
-            </div>
-            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Локация: Москва, РУ</div>
-        </div>
-    </section>
-
-    <div class="sections-menu-grid">
-        <a href="#about" class="menu-column">
-            <div class="menu-num">01</div>
-            <div class="menu-text">обо мне <span>→</span></div>
-        </a>
-        <a href="#portfolio" class="menu-column">
-            <div class="menu-num">02</div>
-            <div class="menu-text">достижения <span>→</span></div>
-        </a>
-        <a href="#portfolio" class="menu-column">
-            <div class="menu-num">03</div>
-            <div class="menu-text">айдентика <span>→</span></div>
-        </a>
-        <a href="#portfolio" class="menu-column">
-            <div class="menu-num">04</div>
-            <div class="menu-text">постеры <span>→</span></div>
-        </a>
-        <a href="#portfolio" class="menu-column">
-            <div class="menu-num">05</div>
-            <div class="menu-text">3D арт <span>→</span></div>
-        </a>
-    </div>
-
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <div class="ticker-item">ARINA MELESHKINA //</div>
-            <div class="ticker-item">VISUAL ARCHITECT //</div>
-            <div class="ticker-item">3D BLENDER MODELING //</div>
-            <div class="ticker-item">BRANDING CONCEPT //</div>
-            <div class="ticker-item">ARINA MELESHKINA //</div>
-            <div class="ticker-item">VISUAL ARCHITECT //</div>
-            <div class="ticker-item">3D BLENDER MODELING //</div>
-            <div class="ticker-item">BRANDING CONCEPT //</div>
-        </div>
-    </div>
-
-    <section id="portfolio">
-        <div class="section-label">02 / Избранные кейсы</div>
-        <div class="portfolio-grid">
-            <div class="case-card wide">
-                <div class="case-image"><div class="case-placeholder">[ BRANDING & IDENTITY ]</div></div>
-                <div class="case-info">
-                    <div class="case-title">Разработка комплексного брендинга</div>
-                    <div class="case-tag">Айдентика</div>
+    <header class="main-header">
+        <div class="name">ARINA MELESHKINA</div>
+        <div class="header-content">
+            <div class="portfolio-pic"></div> <div class="header-text-block">
+                <div class="title-designer">3D, CG & PRODUCT DESIGNER</div>
+                <h1 class="main-title-display">ARINA MELESHKINA<br>PORTFOLIO</h1>
                 </div>
-            </div>
-            <div class="case-card">
-                <div class="case-image"><div class="case-placeholder">[ POSTER SERIES ]</div></div>
-                <div class="case-info">
-                    <div class="case-title">Серия концептуальных плакатов</div>
-                    <div class="case-tag">Типографика</div>
-                </div>
-            </div>
-            <div class="case-card">
-                <div class="case-image"><div class="case-placeholder">[ 3D ENVIRONMENT ]</div></div>
-                <div class="case-info">
-                    <div class="case-title">Промышленный дизайн и сцены</div>
-                    <div class="case-tag">Blender</div>
-                </div>
-            </div>
         </div>
-    </section>
+    </header>
 
-    <section id="about">
-        <div class="section-label">03 / Описание</div>
-        <div class="about-box">
+    <main class="about-me">
+        <section class="about-text-card">
+            <h2>ОБО МНЕ:</h2>
             <div class="about-text">
-                <h3>Арина Мелешкина</h3>
-                <p>Я студентка Института современного искусства по направлению «Графический дизайн». Имею сильный бэкграунд в промышленном и средовом дизайне, благодаря чему мыслю не плоской картинкой, а физическим объемом и четкой структурой.</p>
-                <p>Переношу этот проектный инженерный подход в сферу визуальных коммуникаций, создавая продуманные интерфейсы, смелую айдентику и детализированные 3D-модели.</p>
+                <p>Привет! Меня зовут Арина, я дизайнер из Москвы.</p>
+                <p>Мой фокус - это стык искусства, объёма и продуктового дизайна. Я создаю детальные 3D-модели, пишу картины, рисую иллюстрации, монтирую динамичные видео и проектирую удобные интерфейсы для сайтов и приложений.</p>
+                <div class="language-tag">English: Intermediate (B1)</div>
             </div>
-            <div class="about-skills">
-                <div class="skill-badge-group">
-                    <h4>Софт</h4>
-                    <div class="badge-list">
-                        <span class="b-tag">Figma</span>
-                        <span class="b-tag">Photoshop</span>
-                        <span class="b-tag">Illustrator</span>
-                        <span class="b-tag">Blender</span>
-                    </div>
-                </div>
-                <div class="skill-badge-group">
-                    <h4>Специализация</h4>
-                    <div class="badge-list">
-                        <span class="b-tag">3D-моделирование</span>
-                        <span class="b-tag">Графический дизайн</span>
-                        <span class="b-tag">Айдентика</span>
-                    </div>
-                </div>
+        </section>
+
+        <section class="hard-skills">
+            <h2>HARD SKILLS</h2>
+            <h3>3D-моделирование & CAD:</h3>
+            <div class="hard-skills-grid">
+                <div class="skill-icon-placeholder"><span>Blender</span></div>
+                <div class="skill-icon-placeholder"><span>3D Max</span></div>
+                <div class="skill-icon-placeholder"><span>Cinema 4D</span></div>
+                <div class="skill-icon-placeholder"><span>Inventor</span></div>
+                <div class="skill-icon-placeholder"><span>AutoCAD</span></div>
             </div>
+            </section>
+    </main>
+
+    <section class="soft-skills">
+        <div class="soft-skills-row">
+            <span class="soft-skill-tag">#Креативность</span>
+            <span class="soft-skill-tag">#Адаптивность</span>
+            <span class="soft-skill-tag">#Насмотренность</span>
+        </div>
+        <div class="soft-skills-row">
+            <span class="soft-skill-tag">#Многозадачность</span>
+            <span class="soft-skill-tag">#Концептуальность</span>
+            <span class="soft-skill-tag">#Перфекционизм</span>
+        </div>
+        <div class="soft-skills-row">
+            <span class="soft-skill-tag">#Усидчивость</span>
+            <span class="soft-skill-tag">#Организованность</span>
+            <span class="soft-skill-tag">#Коммуникабельность</span>
         </div>
     </section>
 
-    <footer id="contacts">
-        <div class="footer-title">Начать проект</div>
-        <div class="footer-links">
-            <a href="mailto:dvfdvfadvf895@gmail.com">Email</a>
-            <a href="https://t.me/kal1onka" target="_blank">Telegram</a>
-            <a href="https://vk.com/ma_ryshka" target="_blank">VK</a>
+    <section class="experience">
+        <h2>ОПЫТ & ПРОЕКТЫ</h2>
+
+        <div class="experience-item">
+            <a href="case-samo.html" class="case-link-row">
+                <span class="exp-icon">➕</span>
+                <div class="exp-title-row">
+                    <h3>2024 — 2027 | Институт Современного Искусства</h3>
+                </div>
+                <span class="exp-case-tag">[ Посмотреть кейс Samo ↗ ]</span>
+            </a>
+            
+            <div class="exp-description">
+                <h4>UI/UX дизайн:</h4>
+                <p>Разработка концепта и интерфейса детского приложения Samo.</p>
+                </div>
         </div>
-        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">
-            © 2026 ARINA MELESHKINA.
+
+        <div class="experience-item">
+            <a href="case-bowl-chair.html" class="case-link-row">
+                <span class="exp-icon">➕</span>
+                <div class="exp-title-row">
+                    <h3>2022 — 2024 | Томский Политехнический Университет</h3>
+                </div>
+                <span class="exp-case-tag">[ Посмотреть макет стула ↗ ]</span>
+            </a>
+            <div class="exp-description">
+                <p>[ 3D-Макеты • Промдизайн • Эргономика ]</p>
+            </div>
         </div>
-    </footer>
+        
+        </section>
 
 </body>
 </html>
